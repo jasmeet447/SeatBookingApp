@@ -8,8 +8,8 @@ import { name as appName } from './app.json';
 import { PentairProvider } from '@pentair-ui/shared';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Welcome from './src/Onboarding/Containers/Welcome';
 import SignIn from './src/Onboarding/Containers/SignIn';
+import ChangePassword from './src/Onboarding/Containers/ChangePassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +18,8 @@ const App = () => {
     <PentairProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='Welcome' component={Welcome} />
           <Stack.Screen name='SignIn' component={SignIn} />
+          <Stack.Screen name='ChangePassword' component={ChangePassword} />
         </Stack.Navigator>
       </NavigationContainer>
     </PentairProvider>

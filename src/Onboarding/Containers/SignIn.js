@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import { Auth } from 'aws-amplify';
 import SignInComponent from '../Components/SignInComponent';
+import { configureAmplify } from '../../Common_Feature/ConfigManager';
 
 class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: props.route.params.email,
+            email: '',
             password: '',
             showPassword: false,
             isLoading: false,
@@ -39,6 +40,7 @@ class SignIn extends Component {
       }
       const {email, password} = this.state;
       this.setState({isLoading: true});
+      configureAmplify()
       const response = await Auth.signIn(email.toLowerCase(), password);
       this.setState({isLoading: false});
       alert('SignIn Success!')

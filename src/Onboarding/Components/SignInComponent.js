@@ -48,8 +48,7 @@ class SignInComponent extends React.Component {
           placeholder={input1Placeholder}
           returnKeyType="next"
           value={state.email}
-          onChangeText={onChangeText('email')}
-          isDisabled={true} />
+          onChangeText={onChangeText('email')} />
         <Box removeClippedSubviews={Platform.OS == 'ios' ? false : true}>
           <Input
             contextMenuHidden={true}
