@@ -15,10 +15,11 @@ import { BoxButton } from '@pentair/box-button';
 import { Spinner } from '@pentair/spinner';
 
 const ChangePwdContainer = props => {
+
   return (
     <>
       <Header
-        headerProps={props?.headerProps}/>
+        headerProps={props?.headerProps} />
       <KeyboardAwareScrollView
         contentContainerStyle={styles.container}
         enableOnAndroid
@@ -76,30 +77,30 @@ const ChangePwdContainer = props => {
             />
           </Stack>
 
-          <Stack style={styles.inputContainer}>
-            <Box removeClippedSubviews={Platform.OS == 'ios' ? false : true}>
-              <Input
-                contextMenuHidden={true}
-                autoCorrect={false}
-                label={props.confirmNewPasswordHeaderText}
-                value={props.confirmNewPassword}
-                onChangeText={props.confirmNewPwdChangeHandler}
-                placeholder={props.enterPasswordText}
-                labelStyles={styles.inputLabelMargin}
-                isPasswordInput={true}
-                isSuccess={props.isNewPasswordMatch}
-                isRightIconVisible={true}
-                returnKeyType="done"
-                maxLength={25}
-              />
-            </Box>
+          <Stack
+            style={styles.inputContainer}
+            removeClippedSubviews={Platform.OS == 'ios' ? false : true}>
+            <Input
+              contextMenuHidden={true}
+              autoCorrect={false}
+              label={props.confirmNewPasswordHeaderText}
+              value={props.confirmNewPassword}
+              onChangeText={props.confirmNewPwdChangeHandler}
+              placeholder={props.enterPasswordText}
+              labelStyles={styles.inputLabelMargin}
+              isPasswordInput={true}
+              isSuccess={props.isNewPasswordMatch}
+              isRightIconVisible={true}
+              returnKeyType="done"
+              maxLength={25}
+            />
           </Stack>
           <BoxButton
-           buttonStyle={styles.buttonContainer}
-           maxWidth={styles.buttonContainer.width}
-           buttonText={props.submitButton}
-           isDisabled={props.isChangePwsAllowed}
-           onPress={props.onChangePassword} />
+            buttonStyle={styles.buttonContainer}
+            maxWidth={styles.buttonContainer.width}
+            buttonText={props.submitButton}
+            isDisabled={props.isChangePasswordAllowed}
+            onPress={props.onChangePassword} />
         </Stack>
       </KeyboardAwareScrollView>
       {props.isLoading && <Spinner />}

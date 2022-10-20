@@ -14,77 +14,39 @@ class ChangePassword extends React.Component {
             errorMessage: '',
             currentPassword: '',
             currentPasswordError: '',
-            isPasswordConfirmed: false,
-            strength: '',
             splCharAvail: false,
             numCharAvail: false,
             eightCharsAvail: false,
             upperCharAvail: false,
             showProgress: false,
-            showPassword: true,
-            showCurrentPassword: true,
-            viewRef: null,
-            showModal: false,
-            showForgotModalStatus: false,
-            forgotIndicator: false,
-            forgetEmail: '',
-            invalidResetEmail: false,
             isNewPasswordMatch: false,
             newPassword: '',
             confirmNewPassword: "",
             haveLowercaseLetter: false,
-            showErrorModel: false,
         };
-        this.passwordVal = '';
-        this.resetPassword.bind(this);
     }
 
     setComponentState = (obj = {}, callback) => {
         this.setState(obj, callback);
     };
 
-    _resetPasswordSuccess = () => {
-        this.setComponentState({ showProgress: false });
-    };
-
-    onErrorOkClick = () => {
-        this.setState({ showErrorModel: false })
-    }
-
     resetPassword = () => {
-        const forcePasswordReset = this.props.navigation.getParam(
-            'forcePasswordReset',
-            false,
-        );
-        const email = this.props.navigation.getParam('email', '');
-
-        if (forcePasswordReset) {
-            this.setComponentState({ showProgress: true });
-
-            Auth.signIn(email, this.state.currentPassword)
-                .then(user => Auth.completeNewPassword(user, this.state.newPassword, {}))
-                .catch((err) => {
-                    this.handleError(err);
-                });
-        } else {
-            this.setComponentState({ showProgress: true });
-
-            Auth.currentAuthenticatedUser()
-                .then(user =>
-                    Auth.changePassword(
-                        user,
-                        this.state.currentPassword,
-                        this.state.newPassword,
-                    ),
-                )
-                .catch((err) => {
-                    this.handleError(err);
-                });
-        }
+        this.setState({ showProgress: true });
+        Auth.signIn(this.props.route.params.email, this.state.currentPassword)
+        .then(user => Auth.completeNewPassword(user, this.state.newPassword, {}))
+        .then(response => {
+            console.log('Response=====>', response);
+            this.setState({ showProgress: false });
+        })
+        .catch(error => {
+            console.log('Error=====>', error);
+            this.setState({ showProgress: false });
+            this.handleError(error);
+        });
     };
 
-    handleError = (err) => {
-        if (err?.code === 'NotAuthorizedException') {
+    handleError = error => {
+        if (error?.code === 'NotAuthorizedException') {
             this.setComponentState({
                 currentPasswordError: 'The password is incorrect.',
                 showProgress: false,
@@ -94,11 +56,11 @@ class ChangePassword extends React.Component {
             this.setComponentState({
                 showProgress: false,
             });
-            Alert.alert('Error', getAuthErrorMessage(err?.code));
+            Alert.alert('Error', getAuthErrorMessage(error?.code));
         }
     }
 
-    handleInputChange(val) {
+    handleInputChange = val => {
         if (val) {
             this.setComponentState({
                 eightCharsAvail: val.length > 7,
@@ -118,7 +80,7 @@ class ChangePassword extends React.Component {
         }
     }
 
-    onChangeText(text) {
+    onChangeText = (text) => {
         this.handleInputChange(text);
         this.setComponentState({ newPassword: text });
         if (
@@ -131,7 +93,7 @@ class ChangePassword extends React.Component {
         this.setComponentState({ isNewPasswordMatch: false });
     }
 
-    _confirmPassword(ptext) {
+    _confirmPassword = (ptext) => {
         this.setComponentState({ confirmNewPassword: ptext });
         if (
             ptext === this.state.newPassword &&
@@ -153,6 +115,25 @@ class ChangePassword extends React.Component {
         navigation.goBack();
     };
 
+    checkChangePasswordAllowed = () => {
+        const {
+            currentPassword,
+            newPassword,
+            isNewPasswordMatch,
+            confirmNewPassword,
+            eightCharsAvail,
+            upperCharAvail,
+            haveLowercaseLetter,
+            numCharAvail,
+            splCharAvail,
+        } = this.state;
+        if (currentPassword && newPassword && confirmNewPassword && eightCharsAvail && upperCharAvail 
+            && haveLowercaseLetter && numCharAvail && splCharAvail && isNewPasswordMatch) {
+            return false
+        }
+        return true;
+    }
+
     render() {
         const {
             currentPassword,
@@ -166,25 +147,14 @@ class ChangePassword extends React.Component {
             numCharAvail,
             splCharAvail,
             showProgress,
-            showModal
         } = this.state;
-        const isChangePwsAllowed =
-            currentPassword &&
-                newPassword &&
-                isNewPasswordMatch &&
-                splCharAvail &&
-                numCharAvail &&
-                eightCharsAvail &&
-                upperCharAvail &&
-                haveLowercaseLetter ? false : true
+    
         return (
             <ChangePasswordComponent
                 headerProps={{
                     onPressLeftContent: this.onBackPress ,
                     isBackVisible: true,
                     isCenterDisabled: true,
-                    fontWeight: 'bold',
-                    leftTextStyle: { fontWeight: 'bold' },
                     leftText: 'Change Password',
                 }}
                 state={{
@@ -205,18 +175,15 @@ class ChangePassword extends React.Component {
                 confirmNewPassword={confirmNewPassword}
                 confirmNewPasswordError={currentPasswordError}
                 isNewPasswordMatch={isNewPasswordMatch}
-                currentPwdChangeHandler={value => {
-                    this.setState({ currentPassword: value, currentPasswordError: '' });
-                }}
-                newPwdChangeHandler={value => this.onChangeText(value)}
-                confirmNewPwdChangeHandler={ptext => this._confirmPassword(ptext)}
+                currentPwdChangeHandler={value => this.setState({ currentPassword: value, currentPasswordError: '' })}
+                newPwdChangeHandler={this.onChangeText}
+                confirmNewPwdChangeHandler={this._confirmPassword}
                 onChangePassword={this.resetPassword}
-                isChangePwsAllowed={isChangePwsAllowed}
+                isChangePasswordAllowed={this.checkChangePasswordAllowed()}
                 isLoading={showProgress}
                 pwdChngSucceessTitle={'Password Changed'}
                 pwdChngSucceessMessage={'Your password has been successfully changed.'}
                 pwdChangeModalBtnText={'OK'}
-                isPwdChngSucccessModalVisible={showModal}
                 forgorPasswordPress={this.navigateToForgotPassword}
                 currentPasswordHeaderText={'Current Password'}
                 enterPasswordText={'Enter Password'}
@@ -224,9 +191,6 @@ class ChangePassword extends React.Component {
                 newPasswordHeaderText={'New Password'}
                 confirmNewPasswordHeaderText={'Confirm New Password'}
                 submitButton={'Submit'}
-                showErrorModel={this.state.showErrorModel}
-                onErrorOkClick={this.onErrorOkClick}
-                errorMessage={this.state.errorMessage}
             />
         );
     }

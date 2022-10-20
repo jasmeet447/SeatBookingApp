@@ -24,15 +24,6 @@ class SignInComponent extends React.Component {
         buttonText={buttonText}
         isDisabled={isFormEmpty()}
         onPress={onSignInPress} />
-    <BoxButton
-        buttonStyle={styles.buttonStyle}
-        maxWidth={styles.buttonStyle.width}
-        width={"100%"}
-        color={"primary"}
-        size={"md"}
-        variant={"ghost"}
-        buttonText={switchAccountText}
-        onPress={goToBack} />
     </Stack>
     );
   };

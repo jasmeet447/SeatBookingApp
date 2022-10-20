@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Auth } from 'aws-amplify';
 import SignInComponent from '../Components/SignInComponent';
-import { configureAmplify } from '../../Common_Feature/ConfigManager';
 
 class SignIn extends Component {
     constructor(props) {
@@ -40,11 +39,14 @@ class SignIn extends Component {
       }
       const {email, password} = this.state;
       this.setState({isLoading: true});
-      configureAmplify()
-      const response = await Auth.signIn(email.toLowerCase(), password);
+      const user = await Auth.signIn(email.toLowerCase(), password);
       this.setState({isLoading: false});
-      alert('SignIn Success!')
-      console.log('onSignInPress===>', response);
+      if(user.challengeName === 'NEW_PASSWORD_REQUIRED') {
+        this.props.navigation.navigate('ChangePassword', { user, email });
+      } else {
+        //go to dashboard
+      }
+      console.log('onSignInPress===>', user);
     } catch (error) {
       console.log('onSignInPress===>', error);
       this.setState({isLoading: false});
