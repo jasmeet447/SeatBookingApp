@@ -25,8 +25,6 @@
     "lodash": "^4.17.21",
     "modal-react-native-web": "^0.2.0",
     "moment": "^2.29.4",
-    "pentair-dynamic-config": "../mywater-mobapp-consumer-dynamic-config",
-    "pentair-utility-library": "../mywater-mobapp-utility-lib",
     "react": "17.0.2",
     "react-dom": "^18.2.0",
     "react-native": "0.67.1",

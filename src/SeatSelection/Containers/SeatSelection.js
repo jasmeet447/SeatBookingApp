@@ -8,12 +8,17 @@ import {
   Text,
   View,
   StyleSheet,
+  TouchableHighlightBase,
 } from 'react-native';
+import SeatSelectionComponent from '../Components/SeatSelectionComponent';
 const {width, height} = Dimensions.get('window');
-
-const ROWS = 6;
-const COLS = 4;
-const TIMING = 600;
+const selectedColor = '#8EF0E7'
+const unSelectedColor = '#3493FF'
+const alreadyBookedColor = 'gray'
+const TotalSeats = 120
+const COLS = 20;
+const ROWS = Math.ceil(TotalSeats / COLS)
+const TIMING = 500;
 const TEXT_HEIGHT = 20;
 let seats = [];
 let seatsAnimation = [];
@@ -22,7 +27,8 @@ for (var i = 0; i < ROWS + COLS - 1; i++) {
   seatsAnimation.push(i);
 }
 
-Array(ROWS * COLS)
+if (TotalSeats > 0) {
+Array(TotalSeats)
   .join(' ')
   .split(' ')
   .map((_, i) => {
@@ -32,11 +38,14 @@ Array(ROWS * COLS)
       s: currentIndex,
       key: i,
       animated: new Animated.Value(1),
+      ColumnIndex: i % COLS,
+      RowIndex: (Math.floor(i / COLS) % ROWS)
     };
     seats.push(currentItem);
   });
+}
 
-export default class App extends Component {
+export default class SeatSelection extends Component {
   constructor(props) {
     super(props);
 
@@ -57,21 +66,15 @@ export default class App extends Component {
       return Animated.timing(this.animatedValue[item], {
         toValue: this.state.finished ? 0 : 1,
         duration: TIMING,
+        useNativeDriver: true
       });
     });
-    Animated.sequence([Animated.stagger(TIMING * 0.15, animations)]).start(
+    Animated.sequence([Animated.stagger(TIMING * 0.02, animations)]).start(
       () => {
         this.setState({
           finished: !this.state.finished,
           selectedItems: [],
         });
-
-        // this.selectionAnimation.setValue(0);
-        Animated.timing(this.selectionAnimation, {
-          toValue: 0,
-          duration: 1000,
-          easing: Easing.elastic(1.3),
-        }).start();
       },
     );
   };
@@ -95,7 +98,7 @@ export default class App extends Component {
         onPress={() => {
           const selected = isSelected
             ? selectedItems.filter(i => i !== item.key)
-            : [...selectedItems, item.key];
+            : [item.key];
 
           item.animated.setValue(0);
           this.setState(
@@ -108,18 +111,22 @@ export default class App extends Component {
                 Animated.timing(this.selectionAnimation, {
                   toValue: -TEXT_HEIGHT * selected.length,
                   duration: 500,
+                  useNativeDriver: true,
                   easing: Easing.elastic(1.3),
                 }),
                 Animated.timing(item.animated, {
                   toValue: 1,
                   duration: 200,
+                  useNativeDriver: true
                 }),
               ]).start();
             },
           );
         }}
         style={{
-          opacity: 1 - parseInt(item.s) / 15,
+          opacity: 1,
+          padding: 2,
+          paddingBottom: item.RowIndex !== 0 && (item.RowIndex + 1) % 2 === 0 ? 30 : 2
         }}>
         <Animated.View
           style={{
@@ -132,7 +139,7 @@ export default class App extends Component {
           <Animated.View
             style={[
               {
-                backgroundColor: isSelected ? '#8EF0E7' : '#3493FF',
+                backgroundColor: isSelected ? selectedColor : unSelectedColor,
               },
               styles.item,
               {
@@ -153,6 +160,9 @@ export default class App extends Component {
   };
 
   render() {
+    if (seats.length <= 0) {
+      return <View />
+    }
     return (
       <View style={styles.container}>
         <View
@@ -176,10 +186,10 @@ export default class App extends Component {
             <Text>Refresh</Text>
           </TouchableOpacity>
         </View>
-        <FlatList
-          numColumns={COLS}
+        <SeatSelectionComponent
+          ColumnsCount={COLS}
           extraData={this.state.selectedItems}
-          data={seats}
+          seatsData={seats}
           style={{flex: 0.8}}
           renderItem={this.renderItem}
         />
@@ -188,47 +198,10 @@ export default class App extends Component {
             alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'row',
-            flex: 0.2,
+            flex: 0.15,
           }}>
-          <View
-            style={{
-              height: TEXT_HEIGHT,
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}>
-            <Animated.View
-              style={{
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                transform: [
-                  {
-                    translateY: this.selectionAnimation,
-                  },
-                ],
-              }}>
-              {Array(ROWS * COLS + 1)
-                .join(' ')
-                .split(' ')
-                .map((_, i) => {
-                  return (
-                    <View
-                      key={i}
-                      style={{
-                        height: TEXT_HEIGHT,
-                        width: TEXT_HEIGHT * 1.4,
-                        marginRight: 4,
-                        alignItems: 'flex-end',
-                        justifyContent: 'center',
-                      }}>
-                      <Text style={[styles.text]}>{i}</Text>
-                    </View>
-                  );
-                })}
-            </Animated.View>
+            {this.state.selectedItems.length > 0 && <Text style={styles.text}>Seat number selected: {this.state.selectedItems[0] + 1} </Text>}
           </View>
-          <Text style={styles.text}>locations Selected</Text>
-        </View>
       </View>
     );
   }
@@ -243,8 +216,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
   },
   item: {
-    width: width / COLS,
-    height: width / COLS,
+    width: 70,
+    height: 70,
     alignItems: 'center',
     justifyContent: 'center',
   },
