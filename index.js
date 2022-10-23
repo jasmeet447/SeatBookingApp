@@ -27,11 +27,12 @@ const App = () => {
     <PentairProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='App' component={SeatSelection} />
+          
           <Stack.Screen name='SignIn' component={SignIn} />
           <Stack.Screen name='ChangePassword' component={ChangePassword} />
           <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
           <Stack.Screen name='ResetPassword' component={ResetPassword} />
+          <Stack.Screen name='SeatSelection' component={SeatSelection} />
         </Stack.Navigator>
       </NavigationContainer>
     </PentairProvider>

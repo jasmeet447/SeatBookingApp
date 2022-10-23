@@ -33,17 +33,20 @@ class SignIn extends Component {
   isFormEmpty = () => !this.state.email || !this.state.password;
 
   onSignInPress = async () => {
+    const email = 'jasmeet.singh@pentair.com'
+    const password = 'Pentair@123'
     try {
       if (this.isFormEmpty()) {
         return
       }
-      const {email, password} = this.state;
+      // const {email, password} = this.state;
       this.setState({isLoading: true});
       const user = await Auth.signIn(email.toLowerCase(), password);
       this.setState({isLoading: false});
       if(user.challengeName === 'NEW_PASSWORD_REQUIRED') {
         this.props.navigation.navigate('ChangePassword', { user, email });
       } else {
+        this.props.navigation.navigate('SeatSelection', { user, email })
         //go to dashboard
       }
       console.log('onSignInPress===>', user);
