@@ -85,7 +85,21 @@ export default class SeatSelection extends Component {
     const {selectedItems} = this.state
     if (selectedItems.length <= 0) return
     const seatNo = selectedItems[0] + 1
-      const body = { "bookingID": 3, "seatNo": seatNo, "bookingByName": "Niket Sahai", "bookingByEmail": "abc@xyz.com", "bookingDate": "20-10-2022", "userid": "abcdf" }
+    const email = this.props.route.params.email
+    const userName = this.props.route.params.user.username
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+          dd = '0' + dd;
+        }
+    if (mm < 10) {
+          mm = '0' + mm;
+      }
+    const bookingDate = dd + '-' + mm + '-' + yyyy;
+
+      const body = { "bookingID": seatNo, "seatNo": seatNo, "bookingByName": "", "bookingByEmail": email, "bookingDate": bookingDate, "userid": userName }
       console.log('Book seats data begin ---------- ')
       const options = {
         method: 'POST',
@@ -111,8 +125,7 @@ export default class SeatSelection extends Component {
 
   onBackPress = () => {
         const { navigation, user, email } = this.props;
-        console.log({navigation},this.props.route.params.user, this.props.route.params.email)
-        // navigation.goBack();
+        navigation.goBack();
     };
 
   render() {
@@ -165,12 +178,12 @@ export default class SeatSelection extends Component {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            flexDirection: 'row',
-            height: '20%',
+            flexDirection: 'column',
+            height: '10%',
             width: '100%'
           }}>
         <BoxButton
-          buttonStyle={{alignSelf: 'center', padding: 20, width: '100%'}}
+          buttonStyle={{alignSelf: 'center', padding: 5, width: '100%'}}
           maxWidth={width}
           width={"100%"}
           color={"primary"}
@@ -180,9 +193,8 @@ export default class SeatSelection extends Component {
           isDisabled={this.state.selectedItems.length <= 0}
           onPress={this.onBookSeat}
         />  
+        <Text style={styles.text}> {seatNumberText} </Text> 
         </View>
-        { <Text style={styles.text}> {seatNumberText} </Text> }
-        
         { 
         this.state.isLoading && 
         <View style={{backgroundColor: 'black', position: 'absolute', width, height, opacity: .5}}>
@@ -213,5 +225,5 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '700',
   },
-  text: {fontSize: 15, fontWeight: '500', marginBottom: 20},
+  text: {fontSize: 15, fontWeight: '500', marginVertical: 10},
 });
