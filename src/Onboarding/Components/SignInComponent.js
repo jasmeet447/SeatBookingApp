@@ -33,7 +33,7 @@ class SignInComponent extends React.Component {
       input1Placeholder, forgotPasswordText, input2Label, input2Placeholder } = this.props;
     return (
       <KeyboardAwareScrollView
-        behavior="padding">
+        behavior="`padding`">
         <Input
           label={input1Label}
           placeholder={input1Placeholder}

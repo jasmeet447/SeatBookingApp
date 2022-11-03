@@ -14,6 +14,7 @@ import ChangePassword from './src/Onboarding/Containers/ChangePassword';
 import ForgotPassword from './src/Onboarding/Containers/ForgotPassword';
 import ResetPassword from './src/Onboarding/Containers/ResetPassword';
 import SeatSelection from './src/SeatSelection/Containers/SeatSelection'
+import SpaceSelection from './src/SpaceSelection/Containers/SpaceSelection';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,12 +28,14 @@ const App = () => {
     <PentairProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          
+          {/* <Stack.Screen name='SeatSelection' component={SeatSelection} /> */}
+          <Stack.Screen name='SpaceSelection' component={SpaceSelection} />
           <Stack.Screen name='SignIn' component={SignIn} />
           <Stack.Screen name='ChangePassword' component={ChangePassword} />
           <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
           <Stack.Screen name='ResetPassword' component={ResetPassword} />
-          <Stack.Screen name='SeatSelection' component={SeatSelection} />
+          {/* <Stack.Screen name='SeatSelection' component={SeatSelection} /> */}
+          
         </Stack.Navigator>
       </NavigationContainer>
     </PentairProvider>

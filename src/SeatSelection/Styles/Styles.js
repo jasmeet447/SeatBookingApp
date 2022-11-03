@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -9,10 +10,11 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
   },
   item: {
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 5
   },
   itemText: {
     color: 'white',

@@ -15,6 +15,10 @@ export default function SeatSelectionComponent(props) {
     const ROWS = Math.ceil(seatsCount / COLS )
     const alreadyBookedSeats = props?.bookedSeatsData || []
     let selectionAnimation = new Animated.Value(0);
+    // const isLandscapeMode = props?.isLandscapeMode || false
+    const isLandscapeMode = true
+    // const isPortraitMode = props?.isPortraitMode || false
+    const isPortraitMode = false
 
     const createSeatings = useCallback(() => {
         if (seatsCount > 0) {
@@ -42,6 +46,7 @@ export default function SeatSelectionComponent(props) {
                 };
                 seats.push(currentItem);
             });
+            // if to create row breaks: split this array into indices for empty space index, then push dummy obj, then rejoin
         setTotalSeats(seats)
         setSeatsArrayCreated(true)
         }
@@ -87,28 +92,30 @@ export default function SeatSelectionComponent(props) {
     },[props.onPressRefresh])
 
     const renderItem = (item) => {
-        const i = item?.key;
+        var key = item?.key;
+        // if (item.RowIndex === 1 && item.ColumnIndex === 1 && isPortraitMode) {
+        //     return <View style={styles.item}/>
+        // }
         const scale = animatedValue[item?.currentIndex]?.interpolate({
         inputRange: [0, 0.5, 1],
         outputRange: [1, 0, 1],
         });
-        const isSelected = selectedItems.includes(item?.key);
+        const isSelected = selectedItems.includes(key);
         const itemPressScale = item?.animated?.interpolate({
         inputRange: [0, 0.5, 1],
         outputRange: [1, 0, 1],
         });
-        const isAlreadyBooked = alreadyBookedSeats.filter(i => i.seatNo == item.key + 1).length > 0
+        const isAlreadyBooked = alreadyBookedSeats.filter(i => i.seatNo == key + 1).length > 0
         var bgColor = isSelected ? styles.selectedColor : styles.unSelectedColor
         if (isAlreadyBooked) {
             bgColor = styles.alreadyBookedColor
         }
         return (
              <TouchableOpacity
-             
                 activeOpacity={isAlreadyBooked ? 1 : 0.5}
                 onPress={() => {
                 if(isAlreadyBooked) return
-                const selected = isSelected ? selectedItems.filter(i => i !== item?.key) : [item?.key];
+                const selected = isSelected ? selectedItems.filter(i => i !== key) : [item?.key];
                 item?.animated?.setValue(0);
                 setSelectedItems(selected)
                 Animated.parallel([
@@ -126,11 +133,16 @@ export default function SeatSelectionComponent(props) {
                 ]).start();
                 props.onSelectItem(item, selected.length > 0)
                 }}
-                style={{
+                style={[{
                     opacity: 1,
                     padding: 2,
-                    paddingBottom: item?.RowIndex !== 0 && (item?.RowIndex + 1) % 2 === 0 ? 30 : 2
-                }}>
+                },
+                isLandscapeMode && {
+                    paddingRight: ((item?.ColumnIndex + 1) % 2 === 0 && (item?.ColumnIndex + 1) !== COLS)  ? 15 : 0,
+                    paddingBottom: 15
+                    // paddingBottom: item.RowIndex === 0 ? 30 : 2
+                }
+                ]}>
                 <Animated.View
                 style={{
                     transform: [
@@ -172,7 +184,7 @@ export default function SeatSelectionComponent(props) {
             extraData={selectedItems}
             data={totalSeats}
             scrollEnabled={true}
-            contentContainerStyle={{justifyContent: 'flex-start'}}
+            contentContainerStyle={{justifyContent: 'center'}}
             renderItem={({item})=> renderItem(item)}
             scrollToOverflowEnabled={true}
             style={{flex: 0.6}}

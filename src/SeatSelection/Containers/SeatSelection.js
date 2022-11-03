@@ -14,11 +14,13 @@ import {
 import SeatSelectionComponent from '../Components/SeatSelectionComponent';
 import { Spinner } from '@pentair/spinner';
 import { BoxButton } from '@pentair/box-button';
-import { colors } from '@pentair/shared';
+import { colors, fontWeights } from '@pentair/shared';
 import { Header } from '@pentair-ui/mobile';
+import { HeadingBodyText } from '@pentair/heading-body-text';
+import { a } from 'aws-amplify';
 const {width, height} = Dimensions.get('window');
-const TotalSeats = 120
-const COLS = 20;
+const TotalSeats = 14
+const COLS = 6;
 export default class SeatSelection extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,7 @@ export default class SeatSelection extends Component {
       bookedSeatsData: []
     };
 
-    this.SeatSelectionRef = React.createRef();
+    this.selectedSpace = 5;
   }
 
   componentDidMount() {
@@ -44,7 +46,6 @@ export default class SeatSelection extends Component {
 
   
     fetchSeatsData = async () => {
-      console.log('Fetch seats data begin ---------- ')
       const options = {
         method: 'GET',
         headers: {
@@ -80,13 +81,14 @@ export default class SeatSelection extends Component {
     })
   }
 
-  onBookSeat = async () => {
+  onBookSeat = async (spaceId, SeatNo) => {
+    if (spaceId == null || seatNo == null) return
     this.setState({isLoading: true})
     const {selectedItems} = this.state
     if (selectedItems.length <= 0) return
     const seatNo = selectedItems[0] + 1
-    const email = this.props.route.params.email
-    const userName = this.props.route.params.user.username
+    const email = this.props?.route?.params?.email
+    const userName = this.props?.route?.params?.user?.username
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
@@ -99,7 +101,7 @@ export default class SeatSelection extends Component {
       }
     const bookingDate = dd + '-' + mm + '-' + yyyy;
 
-      const body = { "bookingID": seatNo, "seatNo": seatNo, "bookingByName": "", "bookingByEmail": email, "bookingDate": bookingDate, "userid": userName }
+      const body = { "spaceNo": this.selectedSpace, "seatNo": seatNo, "bookingByEmail": email ? email :  "", "bookingDate": bookingDate, "userid": userName ? userName : "" }
       console.log('Book seats data begin ---------- ')
       const options = {
         method: 'POST',
@@ -137,34 +139,29 @@ export default class SeatSelection extends Component {
       <Animated.View style={styles.container}>
       
       <Header
-        headerProps={{
-          onPressLeftContent: this.onBackPress ,
-          isBackVisible: true,
-          isCenterDisabled: true,
-          leftText: 'Select Seats',
-        }}
+            headerProps={{
+            onPressLeftContent: this.onBackPress ,
+            isBackVisible: true,
+            isCenterDisabled: true,
+            isRightDisabled: false,
+            leftText: `Space ${this.selectedSpace}`,
+            rightText: 'refresh',
+            onPressRightContent: this.onPressRefresh,
+            rightContent: [{
+                iconType: 'general',
+                icon: 'refresh',
+                size: 22
+                }]
+            }}
         />
-        <View
-          style={{
-            height: height * 0.1,
-            width: width,
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-          }}>
-          {/* <Text style={{fontSize: 14, fontWeight: '700', color: '#333'}}>
-            Select Seats
-          </Text> */}
-          <TouchableOpacity
-            name="refresh"
-            size={22}
-            color="#666"
-            backgroundColor="transparent"
-            style={{padding: 10}}
-            onPress={this.onPressRefresh}>
-            <Animated.Text>Refresh</Animated.Text>
-          </TouchableOpacity>
-        </View>
+      <View style={{flex: 0.02}} />
+      <HeadingBodyText
+            headingTextType={'large-header'}
+            headingTextStyle={styles.headingTextStyle}
+            headingText={"Select a seat"}
+            bodyText={""}
+      />
+      <View style={{flex: 0.05}} />
       <SeatSelectionComponent
         // innerRef={this.SeatSelectionRef}
         bookedSeatsData={this.state.bookedSeatsData}
@@ -210,10 +207,11 @@ export default class SeatSelection extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
     paddingVertical: 50,
     backgroundColor: 'white',
+    padding: 10
   },
   item: {
     width: 70,
@@ -226,4 +224,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   text: {fontSize: 15, fontWeight: '500', marginVertical: 10},
+  headingTextStyle: {
+      fontWeight: fontWeights.FONT_WEIGHT_SEMIBOLD,
+      textAlign: 'left',
+      top: 10   ,
+    },
 });

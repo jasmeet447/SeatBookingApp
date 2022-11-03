@@ -46,7 +46,8 @@ class SignIn extends Component {
       if(user.challengeName === 'NEW_PASSWORD_REQUIRED') {
         this.props.navigation.navigate('ChangePassword', { user, email });
       } else {
-        this.props.navigation.navigate('SeatSelection', { user, email })
+        // this.props.navigation.navigate('SeatSelection', { user, email })
+        this.props.navigation.navigate('SpaceSelection', { user, email })
         //go to dashboard
       }
       console.log('onSignInPress===>', user);
