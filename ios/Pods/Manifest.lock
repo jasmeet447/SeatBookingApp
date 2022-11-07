@@ -274,7 +274,7 @@ PODS:
     - glog
   - react-native-date-picker (4.2.5):
     - React-Core
-  - react-native-netinfo (9.3.5):
+  - react-native-netinfo (9.3.4):
     - React-Core
   - react-native-safe-area-context (4.4.1):
     - RCT-Folly
@@ -565,7 +565,7 @@ SPEC CHECKSUMS:
   React-jsinspector: ab80bcdb02f28cdfc0dbbaea6db1241565d59002
   React-logger: b08f354e4c928ff794ca477347fea0922aaf11c3
   react-native-date-picker: 55193347d8d0f40948f441ffd4e5db6f0a8fbe13
-  react-native-netinfo: 85b2a435c4d3705c08b0c42ff2d6ef6b9622ea0a
+  react-native-netinfo: 6ac9bcc7c88dc51717bda3484eb99093acb755e0
   react-native-safe-area-context: 99b24a0c5acd0d5dcac2b1a7f18c49ea317be99a
   react-native-webview: 227ba9205abb8579116b69ea5774d9744267c65a
   React-perflogger: 9a6172711d9c4c8c7ac0a426717317c3c6ecf85c
@@ -591,4 +591,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 11082becf4929c6531c98bf33aa6ee618f11b4f8
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

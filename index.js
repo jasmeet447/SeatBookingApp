@@ -13,12 +13,13 @@ import SignIn from './src/Onboarding/Containers/SignIn';
 import ChangePassword from './src/Onboarding/Containers/ChangePassword';
 import ForgotPassword from './src/Onboarding/Containers/ForgotPassword';
 import ResetPassword from './src/Onboarding/Containers/ResetPassword';
-import SeatSelection from './src/SeatSelection/Containers/SeatSelection'
+import SeatSelection from './src/SeatSelection/Containers/SeatSelection';
+import Splash from './src/Onboarding/Containers/Splash';
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
-
+const App = (props) => {
+  console.disableYellowBox = true;
   useEffect(()=>{
     configureAmplify();
   },[])
@@ -27,7 +28,7 @@ const App = () => {
     <PentairProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          
+          <Stack.Screen name='Splash' component={Splash} />
           <Stack.Screen name='SignIn' component={SignIn} />
           <Stack.Screen name='ChangePassword' component={ChangePassword} />
           <Stack.Screen name='ForgotPassword' component={ForgotPassword} />

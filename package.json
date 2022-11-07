@@ -16,6 +16,7 @@
     "@pentair/shared": "0.0.3",
     "@pentair/spinner": "0.0.1",
     "@react-native-async-storage/async-storage": "1.15.14",
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/netinfo": "^9.3.4",
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",

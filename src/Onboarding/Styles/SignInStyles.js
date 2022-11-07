@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { normalize, fontWeights, SCREEN_WIDTH } from '@pentair/shared'
+import { normalize, fontWeights, SCREEN_WIDTH, colors } from '@pentair/shared'
 const screenWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
@@ -36,6 +36,12 @@ const styles = StyleSheet.create({
       width: screenWidth - normalize(40),
       alignSelf: 'center'
     },
+    spinnerContainer: {
+      ...StyleSheet.absoluteFill,
+      backgroundColor: colors.TRANSLUCENT_BLACK,
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
   });
 
   export default styles;
