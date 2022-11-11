@@ -11,7 +11,28 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
-
+// @react-native-async-storage/async-storage
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
+// @react-native-community/netinfo
+import com.reactnativecommunity.netinfo.NetInfoPackage;
+// amazon-cognito-identity-js
+import com.amazonaws.RNAWSCognitoPackage;
+// react-native-date-picker
+import com.henninghall.date_picker.DatePickerPackage;
+// react-native-gesture-handler
+import com.swmansion.gesturehandler.RNGestureHandlerPackage;
+// react-native-localize
+import com.zoontek.rnlocalize.RNLocalizePackage;
+// react-native-safe-area-context
+import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
+// react-native-screens
+import com.swmansion.rnscreens.RNScreensPackage;
+// react-native-svg
+import com.horcrux.svg.SvgPackage;
+// react-native-vision-camera
+import com.mrousavy.camera.CameraPackage;
+// react-native-webview
+import com.reactnativecommunity.webview.RNCWebViewPackage;
 
 public class PackageList {
   private Application application;
@@ -56,7 +77,18 @@ public class PackageList {
 
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
-      new MainReactPackage(mConfig)
+      new MainReactPackage(mConfig),
+      new AsyncStoragePackage(),
+      new NetInfoPackage(),
+      new RNAWSCognitoPackage(),
+      new DatePickerPackage(),
+      new RNGestureHandlerPackage(),
+      new RNLocalizePackage(),
+      new SafeAreaContextPackage(),
+      new RNScreensPackage(),
+      new SvgPackage(),
+      new CameraPackage(),
+      new RNCWebViewPackage()
     ));
   }
 }

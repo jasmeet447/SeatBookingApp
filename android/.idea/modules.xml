@@ -2,7 +2,55 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/newProj.iml" filepath="$PROJECT_DIR$/.idea/modules/newProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.iml" filepath="$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1559372607/newProj.amazon-cognito-identity-js.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/newProj.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/newProj.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/newProj.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/newProj.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/newProj.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/newProj.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/newProj.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/newProj.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1964783/newProj.react-native-async-storage_async-storage.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.main.iml" filepath="$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/175417966/newProj.react-native-community_async-storage.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.iml" filepath="$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1382219791/newProj.react-native-community_netinfo.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-450098413/newProj.react-native-date-picker.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.iml" filepath="$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.main.iml" filepath="$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/834603267/newProj.react-native-localize.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-719876171/newProj.react-native-safe-area-context.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1417929203/newProj.react-native-screens.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.main.iml" filepath="$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/1065051370/newProj.react-native-svg.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.iml" filepath="$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-1115626064/newProj.react-native-vision-camera.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.iml" filepath="$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.main.iml" filepath="$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/2135980671/newProj.react-native-webview.unitTest.iml" />
     </modules>
   </component>
 </project>

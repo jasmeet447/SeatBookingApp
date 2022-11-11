@@ -20,7 +20,7 @@ class Splash extends Component {
             if (userJsonValue != null) {
                 this.props.navigation.reset({
                     index: 0,
-                    routes: [{ name: 'SeatSelection', params: {email, user: userJsonValue}}],
+                    routes: [{ name: 'Dashboard', params: {email, user: userJsonValue}}],
                 });
             } else {
                 this.props.navigation.reset({

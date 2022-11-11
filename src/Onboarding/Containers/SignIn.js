@@ -51,9 +51,8 @@ class SignIn extends Component {
         this.setState({email: '', password: ''})
         this.props.navigation.reset({
           index: 0,
-          routes: [{ name: 'SeatSelection', params: {email, user} }],
+          routes: [{ name: 'Dashboard', params: {email, user} }],
         });
-        //this.props.navigation.navigate('SeatSelection', { user, email })
       }
     } catch (error) {
       Alert.alert('Error!', error.message);
