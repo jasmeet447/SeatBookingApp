@@ -44,6 +44,7 @@ class SignIn extends Component {
       const user = await Auth.signIn(email.toLowerCase(), password);
       this.setState({ isLoading: false });
       if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
+        this.setState({email: '', password: ''})
         this.props.navigation.navigate('ChangePassword', { user, email });
       } else {
         //go to dashboard
@@ -54,7 +55,9 @@ class SignIn extends Component {
           routes: [{ name: 'Dashboard', params: {email, user} }],
         });
       }
+      console.log('user======>', user);
     } catch (error) {
+      console.log('error======>', error);
       Alert.alert('Error!', error.message);
       this.setState({ isLoading: false });
     }

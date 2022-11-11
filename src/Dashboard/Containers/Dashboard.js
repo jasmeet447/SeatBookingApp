@@ -757,7 +757,7 @@ class Dashboard extends Component {
           }}
         />
         <Box style={styles.container}>
-          <ScrollView>
+          <ScrollView showsHorizontalScrollIndicator={false}>
             <Box style={styles.seatContainer}>
               <Text style={styles.spaceNumber}>SPACE 1</Text>
               {this.SPACE_1_TO_6_SEATS.space1.map((item, index) => this.renderItem(item, index, 'space1'))}

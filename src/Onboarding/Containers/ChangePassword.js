@@ -37,6 +37,7 @@ class ChangePassword extends React.Component {
         .then(response => {
             console.log('Response=====>', response);
             this.setState({ showProgress: false });
+            this.props.navigation.navigate('SignIn');
         })
         .catch(error => {
             console.log('Error=====>', error);

@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
     marginHorizontal: normalize(5),
   },
   spaceNumber: {
-    fontSize: normalize(10),
-    minWidth: normalize(45)
+    fontSize: normalize(12),
+    minWidth: normalize(60)
   },
   seatStyle: {
-    width: normalize(20),
-    height: normalize(22),
-    margin: normalize(4),
+    width: normalize(25),
+    height: normalize(25),
+    margin: normalize(5),
     borderWidth: normalize(0.5),
     borderColor: 'green',
     borderRadius: normalize(2.5),
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     marginVertical: normalize(10)
   },
   seatingPlanText: {
-    marginTop: normalize(-7.5),
+    marginTop: normalize(-5),
   },
   seatRepresentationBlock: {
     flexDirection: 'row',
@@ -98,23 +98,23 @@ const styles = StyleSheet.create({
     marginHorizontal: normalize(10),
   },
   bookedSeat: {
-    width: normalize(20),
-    height: normalize(20),
+    width: normalize(25),
+    height: normalize(25),
     borderWidth: normalize(0.5),
     borderRadius: normalize(2.5),
     backgroundColor: colors.DISABLE_BUTTON_COLOR,
     borderColor: colors.DISABLE_BUTTON_COLOR,
   },
   availableSeat: {
-    width: normalize(20),
-    height: normalize(20),
+    width: normalize(25),
+    height: normalize(25),
     borderWidth: normalize(0.5),
     borderRadius: normalize(2.5),
     borderColor: 'green',
   },
   selectedSeat: {
-    width: normalize(20),
-    height: normalize(20),
+    width: normalize(25),
+    height: normalize(25),
     borderWidth: normalize(0.5),
     borderRadius: normalize(2.5),
     backgroundColor: 'green',
